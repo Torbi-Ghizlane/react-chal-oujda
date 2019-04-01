@@ -1,0 +1,87 @@
+.headerContact{
+    padding: 3% 0;
+    text-align: center
+}
+.form-control, .form-control:focus {
+    border: 1px solid #e8e8e8;
+  
+}
+.form-control {
+    background-color: #f5f5f5;
+    box-shadow: none;
+    color: #565656;
+    font-family: 'Rubik', sans-serif;
+    font-size: 1rem;
+    line-height: 1.43;
+    min-height: 3.5em;
+    padding: 1.07em .5em;
+}
+.input-group-btn{
+    text-align: center;
+    margin: 2% 0
+}
+
+.btn-black-outline, .btn-black-outline:active {
+    padding: 1rem 3rem;
+    background: none;
+    align-items: center;
+    justify-content: center;
+    border-color: #000000;
+    color: #000000;
+    font-weight: 500;
+    
+}
+.btn-black-outline:hover {
+    background-color: #000000;
+    color: #ffffff
+}
+.social-buttons .btn {
+    width: 30%;
+    
+    font-size: 15px;
+    text-align: left; 
+    line-height: 24px;     
+    margin: 5px 35%  
+}
+
+
+.social-buttons .btn i {
+    color: #ffffff;
+    margin: 4px 15px  0 5px;
+    /* min-width: 15px; */
+  
+}
+
+.fa{
+    font-size: 18px;
+}
+
+
+  
+  @media (min-width: 576px) {
+    .social-buttons .btn  {
+      max-width: 540px;
+    }
+    .fa{
+        font-size: 12px;
+    
+    }
+  }
+  
+  @media (min-width: 768px) {
+  .social-buttons .btn  {
+      max-width: 720px;
+    }
+  }
+  
+  @media (min-width: 992px) {
+  .social-buttons .btn  {
+      max-width: 960px;
+    }
+  }
+  
+  @media (min-width: 1200px) {
+  .social-buttons .btn  {
+      max-width: 1140px;
+    }
+  }

@@ -1,4 +1,4 @@
-export default [
+export const navList = [
   {
     title: "Home",
     href: "/"
@@ -10,5 +10,16 @@ export default [
   {
     title: "About us",
     href: "About"
+  }
+];
+
+export const auth = [
+  {
+    href: "SignIn",
+    title: "Sign in"
+  },
+  {
+    href: "SignUp",
+    title: "Sign up"
   }
 ];

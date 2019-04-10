@@ -1,25 +1,57 @@
 import React from "react";
-import {NavLink, Link} from 'react-router-dom'
+import { connect } from "react-redux";
+import SignedInLinks from "./SignedInLinks";
+import SignedOutLinks from "./SignedOutLinks";
+import { NavLink, Link } from "react-router-dom";
 
-const Header = (props) => {
+const Header = props => {
+  const { auth, profile } = props;
+  console.log(props.authLinks);
+  const links = auth.uid ? (
+    <SignedInLinks profile={profile} />
+  ) : (
+    <SignedOutLinks navLinks={props.authLinks} />
+  );
+  return (
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <Link className="navbar-brand" to="/">
+        <h5>{props.appTitle}</h5>
+      </Link>
+      <button
+        className="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span className="navbar-toggler-icon" />
+      </button>
 
-return(
-  <div className="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-   <Link className="my-0 mr-md-auto font-weight-normal" to= '/' ><h5>{props.appTitle}</h5></Link>
-    <nav className="my-2 my-md-0 mr-md-3">
-    <ul className=" top-menu" >
-    {props.navLinks.map((link, index) => (
-    <li className="" key={index}>
-    <NavLink className=" p-2 text-dark" to={link.href}>{link.title}</NavLink>
-    </li>
-    ))}
-   
-    </ul>
-    </nav> 
-    <NavLink className=" btn btn-outline-primary"  to="/SignIn ">Sign in</NavLink>
-    <NavLink  className=" btn btn-outline-primary" to="/SignUp ">Sign up</NavLink>   
-  </div>
-);
-  }
+      <div className="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul className="navbar-nav mr-auto">
+          {props.navLinks.map((link, index) => (
+            <li className="nav-item" key={index}>
+              <NavLink className="nav-link" to={link.href}>
+                {link.title}
+              </NavLink>
+            </li>
+          ))}
+        </ul>
 
-export default Header
+        {links}
+      </div>
+    </nav>
+  );
+};
+
+const mapStateToProps = state => {
+  console.log(state);
+  return {
+    auth: state.firebase.auth,
+    profile: state.firebase.profile
+  };
+};
+
+export default connect(mapStateToProps)(Header);
